@@ -128,14 +128,14 @@
         },
         {
             "name": "TaskComponent",
-            "id": "component-TaskComponent-245625b29cca98c8fd92782519cb00f663a9f616f981a246dbb62652e7aa425e03ced1eb82de69e874838b2165ce0fb2b95760afceb9492d673ebb55e95e8307",
+            "id": "component-TaskComponent-64b45e4c17a0fbc2955642d0b7c827703250a1d841b218e808f1531923a4f0770b88526076b75a8a4cb1c5ae12ffa7de82070f998a1d4ef6e1efab19bb86dc3d",
             "file": "src/app/components/task/task.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-task",
+            "selector": "task",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
@@ -145,7 +145,18 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "task",
+                    "defaultValue": "'Take out trash'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -156,13 +167,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-task',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './task.component.html',\r\n  styleUrl: './task.component.scss',\r\n})\r\nexport default class TaskComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'task',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './task.component.html',\r\n  styleUrl: './task.component.scss',\r\n})\r\nexport default class TaskComponent {\r\n  task = 'Take out trash';\r\n}\r\n",
             "styleUrl": "./task.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>task works!</p>\r\n"
+            "templateData": "<article class=\"task-wrapper\">\r\n  <div class=\"task-checkbox\"></div>\r\n  <div class=\"task-body\">{{ this.task }}</div>\r\n  <div class=\"task-actions\"></div>\r\n</article>\r\n"
         }
     ],
     "modules": [],
@@ -262,7 +273,7 @@
                 "linktype": "component",
                 "name": "TaskComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

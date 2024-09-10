@@ -1,1 +1,12 @@
-<p>home works!</p>
+<section>
+  <input
+    name="newTodo"
+    type="text"
+    placeholder="Create a new todo..."
+    [formControl]="newTask"
+    (keypress)="submitTodo($event)"
+  />
+</section>
+<section>
+  <task-list [tasks]="tasks"></task-list>
+</section>

@@ -29,6 +29,7 @@ type Story = StoryObj<TaskComponent>;
 
 export const Default: Story = {
   args: {
+    id: '0',
     task: 'Make dinner',
   },
 };

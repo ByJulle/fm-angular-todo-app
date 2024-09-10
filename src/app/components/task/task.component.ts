@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
+interface ToDo {
+  id: string;
+  task: string;
+  status: string;
+}
 @Component({
   selector: 'task',
   standalone: true,
@@ -8,5 +13,6 @@ import { Component } from '@angular/core';
   styleUrl: './task.component.scss',
 })
 export default class TaskComponent {
-  task = 'Take out trash';
+  @Input() id: string = '';
+  @Input() task: string = '';
 }
