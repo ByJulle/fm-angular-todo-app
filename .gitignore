@@ -57,3 +57,5 @@ testem.log
 Thumbs.db
 
 todo-app-main.zip
+
+*storybook.log
