@@ -1,11 +1,16 @@
 import { Component, Input } from '@angular/core';
 import TaskComponent from '../task/task.component';
 import { NgFor } from '@angular/common';
-import { ToDoList } from '../../types/tasks';
+import { ToDo, ToDoList } from '../../types/tasks';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'task-list',
   standalone: true,
-  imports: [TaskComponent, NgFor],
+  imports: [TaskComponent, NgFor, DragDropModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss',
 })
@@ -16,5 +21,8 @@ export class TaskListComponent {
   // Internal logic
   updateStatus(id: string) {
     console.log('update:', id);
+  }
+  drop(event: CdkDragDrop<ToDoList>) {
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 }
