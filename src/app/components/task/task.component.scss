@@ -1,3 +1,47 @@
+@import "../../../styles.scss";
+
+.task {
+  input {
+    display: none;
+  }
+}
 .task-wrapper {
-  background-color: blue;
+  padding: 1rem;
+  border-bottom: 1px solid $lightGrayBlue;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task-checkbox {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  &::after{
+    content: '';
+    background-image: $checkBackground;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    left: -1px;
+    top: -1px;
+    z-index: -1;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.task-body {
+  line-height: 14px;
+  cursor: pointer;
 }

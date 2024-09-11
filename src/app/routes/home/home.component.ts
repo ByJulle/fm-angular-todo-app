@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -16,21 +17,21 @@ import {
 export class HomeComponent {
   tasks = [
     {
-      id: '0',
+      id: uuidv4(),
       title: 'Throw out trash',
-      status: '',
+      status: 'active',
     },
     {
-      id: '1',
+      id: uuidv4(),
       title: 'Make dinner',
-      status: '',
+      status: 'active',
     },
   ];
   newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   createNewTask(task: string) {
     this.tasks.push({
-      id: '0',
+      id: uuidv4(),
       title: task,
       status: 'active',
     });

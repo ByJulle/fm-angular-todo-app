@@ -15,4 +15,5 @@ interface ToDo {
 export default class TaskComponent {
   @Input() id: string = '';
   @Input() task: string = '';
+  @Input() status: string = 'active';
 }

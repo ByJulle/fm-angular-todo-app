@@ -18,10 +18,8 @@ const meta: Meta<TaskComponent> = {
   render: (args: TaskComponent) => ({
     props: {
       ...args,
-      onPinTask: actionsData.onPinTask,
-      onArchiveTask: actionsData.onArchiveTask,
     },
-    template: `<task ${argsToTemplate(args)}></task>`,
+    template: `<div style="border-radius:10px; box-shadow: 0px 0px 10px lightgray;overflow: hidden;"><task ${argsToTemplate(args)}></task></div>`,
   }),
 };
 export default meta;
@@ -31,5 +29,14 @@ export const Default: Story = {
   args: {
     id: '0',
     task: 'Make dinner',
+    status: 'active',
+  },
+};
+
+export const Completed: Story = {
+  args: {
+    id: '0',
+    task: 'Make dinner',
+    status: 'completed',
   },
 };
