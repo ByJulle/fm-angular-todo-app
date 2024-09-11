@@ -24,7 +24,7 @@ export class HomeComponent {
     {
       id: uuidv4(),
       title: 'Make dinner',
-      status: 'active',
+      status: 'completed',
     },
   ];
   newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);

@@ -10,5 +10,11 @@ import { ToDoList } from '../../types/tasks';
   styleUrl: './task-list.component.scss',
 })
 export class TaskListComponent {
+  // Component props
   @Input() tasks: ToDoList = [];
+
+  // Internal logic
+  updateStatus(id: string) {
+    console.log('update:', id);
+  }
 }

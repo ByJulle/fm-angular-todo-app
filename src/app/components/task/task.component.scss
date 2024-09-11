@@ -14,12 +14,12 @@
   align-items: center;
 }
 
-.task-checkbox {
+.checkbox-wrapper {
   border-radius: 50%;
   width: 20px;
   height: 20px;
   position: relative;
-  background-color: transparent;
+  background-color: white;
   cursor: pointer;
   &::after{
     content: '';
@@ -41,7 +41,17 @@
   }
 }
 
+.checked {
+  background-color: transparent;
+}
+
 .task-body {
   line-height: 14px;
   cursor: pointer;
+}
+
+.task-actions {
+  button {
+
+  }
 }

@@ -1,3 +1,9 @@
 <section>
-  <task *ngFor="let task of tasks" [id]="task.id" [task]="task.title"></task>
+  <task
+    *ngFor="let task of tasks"
+    [id]="task.id"
+    [task]="task.title"
+    [status]="task.status"
+    (updateStatus)="updateStatus(task.id)"
+  ></task>
 </section>

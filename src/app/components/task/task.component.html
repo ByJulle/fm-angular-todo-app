@@ -1,16 +1,24 @@
 <article class="task">
-  <input type="checkbox" [name]="id" [id]="id" />
-  <label [for]="id">
-    <div class="task-wrapper">
-      <div class="task-checkbox">
-        <img src="assets/icon-check.svg" alt="checkbox icon" />
-      </div>
-      <div class="task-body">
-        <p>{{ this.task }}</p>
-      </div>
-      <div class="task-actions">
-        <button></button>
-      </div>
+  <div class="task-wrapper">
+    <div class="task-checkbox">
+      <input
+        type="checkbox"
+        [name]="id"
+        [id]="id"
+        (change)="this.updateStatus.emit(this.id)"
+      /><label [for]="id">
+        <div class="checkbox-wrapper" [ngClass]="{ checked: isChecked }">
+          <img src="assets/icon-check.svg" alt="checkbox icon" />
+        </div>
+      </label>
     </div>
-  </label>
+    <div class="task-body">
+      <p>{{ this.task }}</p>
+    </div>
+    <div class="task-actions">
+      <button>
+        <img src="assets/icon-cross.svg" alt="remove todo icon" />
+      </button>
+    </div>
+  </div>
 </article>
