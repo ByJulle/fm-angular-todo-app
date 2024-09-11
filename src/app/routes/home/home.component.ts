@@ -39,8 +39,10 @@ export class HomeComponent {
 
   submitTodo(e: KeyboardEvent): void {
     if (e.key === 'Enter') {
-      if (this.newTask.value !== null && !this.newTask.invalid)
+      if (this.newTask.value !== null && !this.newTask.invalid) {
         this.createNewTask(this.newTask.value);
+        this.newTask.reset();
+      }
     }
   }
 }

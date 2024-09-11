@@ -12,11 +12,11 @@
         </div>
       </label>
     </div>
-    <div class="task-body">
+    <div class="task-body" cdkDragHandle>
       <p>{{ this.task }}</p>
     </div>
     <div class="task-actions">
-      <button>
+      <button (click)="this.removeTask.emit(this.id)">
         <img src="assets/icon-cross.svg" alt="remove todo icon" />
       </button>
     </div>

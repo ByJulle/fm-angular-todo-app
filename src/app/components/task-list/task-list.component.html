@@ -1,10 +1,12 @@
-<section cdkDropList (cdkDropListDropped)="drop($event)">
-  <task
-    *ngFor="let task of tasks"
-    [id]="task.id"
-    [task]="task.title"
-    [status]="task.status"
-    (updateStatus)="updateStatus(task.id)"
-    cdkDrag
-  ></task>
+<section cdkDropList (cdkDropListDropped)="drop($event)" class="todoList">
+  @for (task of tasks; track task) {
+    <task
+      [id]="task.id"
+      [task]="task.title"
+      [status]="task.status"
+      (updateStatus)="updateStatus(task.id)"
+      (removeTask)="removeTask(task.id)"
+      cdkDrag
+    />
+  }
 </section>
