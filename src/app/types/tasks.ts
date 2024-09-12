@@ -1,10 +1,8 @@
 export type ToDo = {
   id: string;
   title: string;
-  status: string;
+  status: TASK_STATUS;
 };
-
-export type ToDoList = ToDo[];
 
 export enum TASK_STATUS {
   ACTIVE = 'active',

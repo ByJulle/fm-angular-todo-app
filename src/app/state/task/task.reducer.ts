@@ -1,6 +1,11 @@
-import { TASK_STATUS, ToDo } from './../../types/tasks.d';
+import { TASK_STATUS, ToDo } from './../../types/tasks';
 import { createReducer, on } from '@ngrx/store';
-import { addTask, removeTask, updateTaskStatus } from './task.actions';
+import {
+  addTask,
+  removeTask,
+  updateTasksArray,
+  updateTaskStatus,
+} from './task.actions';
 import { v4 as uuid } from 'uuid';
 export interface TasksState {
   tasks: ToDo[];
@@ -11,13 +16,13 @@ const initialState: TasksState = {
 
 export const tasksReducer = createReducer(
   initialState,
-  on(addTask, (state, { title }) => {
-    console.log(title);
-    return {
-      ...state,
-      tasks: [...state.tasks, { id: uuid(), title: title, status: 'active' }],
-    };
-  }),
+  on(addTask, (state, { title }) => ({
+    ...state,
+    tasks: [
+      ...state.tasks,
+      { id: uuid(), title: title, status: TASK_STATUS.ACTIVE },
+    ],
+  })),
   on(removeTask, (state, { id }) => ({
     ...state,
     tasks: state.tasks.filter((task) => task.id !== id),
@@ -27,4 +32,8 @@ export const tasksReducer = createReducer(
       ...state,
     };
   }),
+  on(updateTasksArray, (state, { tasks }) => ({
+    ...state,
+    tasks,
+  })),
 );

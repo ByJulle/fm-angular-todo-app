@@ -6,7 +6,7 @@ import { HomeComponent } from './routes/home/home.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { StoreModule } from '@ngrx/store';
 import { tasksReducer } from './state/task/task.reducer';
-
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 const ROUTES = [HomeComponent];
 const COMPONENTS = [TaskListComponent];
 @NgModule({
@@ -15,6 +15,7 @@ const COMPONENTS = [TaskListComponent];
     ...COMPONENTS,
     ...ROUTES,
     StoreModule.forRoot({ tasks: tasksReducer }),
+    StoreDevtoolsModule,
     RouterModule,
     RouterOutlet,
   ],

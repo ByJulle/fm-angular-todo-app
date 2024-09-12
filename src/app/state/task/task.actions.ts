@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { ToDo } from '../../types/tasks';
 
 export const addTask = createAction(
   '[Tasks] Add task',
@@ -11,4 +12,9 @@ export const removeTask = createAction(
 export const updateTaskStatus = createAction(
   '[Tasks] Update task status',
   props<{ id: string; newStatus: string }>(),
+);
+
+export const updateTasksArray = createAction(
+  '[Tasks] Update tasks array',
+  props<{ tasks: ToDo[] }>(),
 );

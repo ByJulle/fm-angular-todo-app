@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectAllTasks } from '../../state/task/task.selectors';
-import { addTask } from '../../state/task/task.actions';
+import { addTask, removeTask } from '../../state/task/task.actions';
 import { AppState } from '../../state/app.state';
 import { AsyncPipe } from '@angular/common';
 import { ToDo } from '../../types/tasks';
