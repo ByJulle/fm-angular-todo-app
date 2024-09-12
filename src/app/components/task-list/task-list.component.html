@@ -1,11 +1,39 @@
-<section cdkDropList (cdkDropListDropped)="drop($event)" class="todoList">
-  @for (task of tasks; track task) {
-    <task
-      [id]="task.id"
-      [task]="task.title"
-      [status]="task.status"
-      (updateStatus)="updateStatus(task.id, task.status)"
-      (removeTask)="removeTask(task.id)"
-    />
-  }
-</section>
+<div class="todoList">
+  <ul
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    *ngIf="this.tasks.length > 0; else emptyTasks"
+  >
+    @for (task of tasks; track task) {
+      <task
+        [id]="task.id"
+        [task]="task.title"
+        [status]="task.status"
+        (updateStatus)="updateStatus(task.id, task.status)"
+        (removeTask)="removeTask(task.id)"
+      />
+    }
+  </ul>
+  <ng-template #emptyTasks>
+    <div>No tasks</div>
+  </ng-template>
+  <footer class="filter-wrapper">
+    <div class="filter-tasks-count">
+      <p>
+        <span>{{ this.tasks.length }}</span> items left
+      </p>
+    </div>
+    <div class="filter-options">
+      <button (click)="this.filterTasks.emit('all')">All</button>
+      <button (click)="this.filterTasks.emit(TASK_STATUS.ACTIVE)">
+        Active
+      </button>
+      <button (click)="this.filterTasks.emit(TASK_STATUS.COMPLETED)">
+        Completed
+      </button>
+    </div>
+    <div class="filter-clear-completed">
+      <button (click)="clearCompletedTasks()">Clear completed</button>
+    </div>
+  </footer>
+</div>

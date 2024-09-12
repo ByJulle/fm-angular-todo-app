@@ -17,9 +17,25 @@
 .todoList {
   width: 500px;
   max-width: 100%;
-  min-height: 60px;
   display: block;
   border-radius: 10px;
   box-shadow: 0px 2px 30px $darkGrayBlue;
   overflow: hidden;
+}
+
+
+.filter-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-size: 12px;
+  button {
+    cursor: pointer;
+  }
+}
+
+.filter-options {
+  display: flex;
+  gap: 1rem;
 }

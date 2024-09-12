@@ -2,6 +2,7 @@ import { TASK_STATUS, ToDo } from './../../types/tasks';
 import { createReducer, on } from '@ngrx/store';
 import {
   addTask,
+  clearCompletedTasks,
   removeTask,
   updateTasksArray,
   updateTaskStatus,
@@ -40,5 +41,9 @@ export const tasksReducer = createReducer(
   on(updateTasksArray, (state, { tasks }) => ({
     ...state,
     tasks,
+  })),
+  on(clearCompletedTasks, (state) => ({
+    ...state,
+    tasks: state.tasks.filter((task) => task.status !== TASK_STATUS.COMPLETED),
   })),
 );

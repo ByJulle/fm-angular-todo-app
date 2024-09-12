@@ -18,3 +18,7 @@ export const updateTasksArray = createAction(
   '[Tasks] Update tasks array',
   props<{ tasks: ToDo[] }>(),
 );
+
+export const clearCompletedTasks = createAction(
+  '[Tasks] Clear completed tasks',
+);

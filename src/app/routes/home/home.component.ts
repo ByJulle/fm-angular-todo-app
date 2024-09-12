@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of, filter as filterPipe, map, tap } from 'rxjs';
 import { TitleComponent } from './../../components/title/title.component';
 import { Component } from '@angular/core';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
@@ -10,10 +10,10 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectAllTasks } from '../../state/task/task.selectors';
-import { addTask, removeTask } from '../../state/task/task.actions';
+import { addTask } from '../../state/task/task.actions';
 import { AppState } from '../../state/app.state';
-import { AsyncPipe } from '@angular/common';
-import { ToDo } from '../../types/tasks';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { TASK_STATUS, ToDo } from '../../types/tasks';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -23,12 +23,13 @@ import { ToDo } from '../../types/tasks';
     FormsModule,
     ReactiveFormsModule,
     AsyncPipe,
+    NgIf,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  tasks: Observable<ToDo[]>;
+  tasks: Observable<ToDo[]> = of<ToDo[]>([]);
   constructor(private store: Store<AppState>) {
     this.tasks = store.select(selectAllTasks);
   }
@@ -37,6 +38,14 @@ export class HomeComponent {
 
   createNewTask(task: string) {
     this.store.dispatch(addTask({ title: task }));
+  }
+
+  filterTasks(filter: TASK_STATUS | 'all') {
+    if (filter !== 'all')
+      this.tasks = this.store
+        .select(selectAllTasks)
+        .pipe(map((tasks) => tasks.filter((task) => task.status === filter)));
+    else this.tasks = this.store.select(selectAllTasks);
   }
 
   submitTodo(e: KeyboardEvent): void {
