@@ -33,10 +33,6 @@ export class HomeComponent {
     this.tasks = store.select(selectAllTasks);
   }
 
-  ngOnInit() {
-    this.tasks.subscribe((data) => console.log(data));
-  }
-
   newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   createNewTask(task: string) {

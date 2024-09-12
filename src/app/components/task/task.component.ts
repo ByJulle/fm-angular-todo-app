@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { CdkDragHandle } from '@angular/cdk/drag-drop';
+import { CdkDragHandle, CdkDrag } from '@angular/cdk/drag-drop';
 interface ToDo {
   id: string;
   task: string;
@@ -9,7 +9,7 @@ interface ToDo {
 @Component({
   selector: 'task',
   standalone: true,
-  imports: [NgClass, CdkDragHandle],
+  imports: [NgClass, CdkDrag, CdkDragHandle],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss',
 })
