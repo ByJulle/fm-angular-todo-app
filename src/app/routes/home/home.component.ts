@@ -1,4 +1,12 @@
-import { Observable, of, filter as filterPipe, map, tap } from 'rxjs';
+import {
+  Observable,
+  of,
+  filter as filterPipe,
+  map,
+  tap,
+  isEmpty,
+  defaultIfEmpty,
+} from 'rxjs';
 import { TitleComponent } from './../../components/title/title.component';
 import { Component } from '@angular/core';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
@@ -31,7 +39,7 @@ import { TASK_STATUS, ToDo } from '../../types/tasks';
 export class HomeComponent {
   tasks: Observable<ToDo[]> = of<ToDo[]>([]);
   constructor(private store: Store<AppState>) {
-    this.tasks = store.select(selectAllTasks);
+    this.tasks = store.select(selectAllTasks).pipe(defaultIfEmpty([]));
   }
 
   newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
