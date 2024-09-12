@@ -46,7 +46,6 @@ export class TaskListComponent {
     let tmp_tasks = [...this.tasks];
     if (tmp_tasks !== null) {
       moveItemInArray(tmp_tasks, event.previousIndex, event.currentIndex);
-      console.log(tmp_tasks);
     }
     this.store.dispatch(updateTasksArray({ tasks: tmp_tasks }));
   }
