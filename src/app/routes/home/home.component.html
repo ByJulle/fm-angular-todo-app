@@ -1,12 +1,15 @@
-<section>
-  <input
-    name="newTodo"
-    type="text"
-    placeholder="Create a new todo..."
-    [formControl]="newTask"
-    (keypress)="submitTodo($event)"
-  />
-</section>
-<section>
-  <task-list [tasks]="tasks"></task-list>
+<section class="main-content">
+  <app-title />
+  <div class="input-wrapper">
+    <input
+      name="newTodo"
+      type="text"
+      placeholder="Create a new todo..."
+      [formControl]="newTask"
+      (keypress)="submitTodo($event)"
+    />
+  </div>
+  <div class="taskList-wrapper">
+    <task-list [tasks]="tasks | async"></task-list>
+  </div>
 </section>

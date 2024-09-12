@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 // cdk drag and drop styling
 .cdk-drag-preview {
   border: none;
@@ -32,6 +34,7 @@
   max-width: 100%;
   min-height: 60px;
   display: block;
-
+  border-radius: 10px;
+  box-shadow: 0px 2px 30px $darkGrayBlue;
   overflow: hidden;
 }

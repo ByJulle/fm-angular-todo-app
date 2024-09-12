@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { TitleComponent } from './../../components/title/title.component';
 import { Component } from '@angular/core';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
 import {
@@ -6,35 +8,39 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { v4 as uuidv4 } from 'uuid';
+import { Store } from '@ngrx/store';
+import { selectAllTasks } from '../../state/task/task.selectors';
+import { addTask } from '../../state/task/task.actions';
+import { AppState } from '../../state/app.state';
+import { AsyncPipe } from '@angular/common';
+import { ToDo } from '../../types/tasks';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TaskListComponent, FormsModule, ReactiveFormsModule],
+  imports: [
+    TaskListComponent,
+    TitleComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  tasks = [
-    {
-      id: uuidv4(),
-      title: 'Throw out trash',
-      status: 'active',
-    },
-    {
-      id: uuidv4(),
-      title: 'Make dinner',
-      status: 'completed',
-    },
-  ];
+  tasks: Observable<ToDo[]>;
+  constructor(private store: Store<AppState>) {
+    this.tasks = store.select(selectAllTasks);
+  }
+
+  ngOnInit() {
+    this.tasks.subscribe((data) => console.log(data));
+  }
+
   newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   createNewTask(task: string) {
-    this.tasks.push({
-      id: uuidv4(),
-      title: task,
-      status: 'active',
-    });
+    this.store.dispatch(addTask({ title: task }));
   }
 
   submitTodo(e: KeyboardEvent): void {

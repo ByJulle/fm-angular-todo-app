@@ -17,7 +17,7 @@ import {
 })
 export class TaskListComponent {
   // Component props
-  @Input() tasks: ToDoList = [];
+  @Input() tasks: ToDo[] | null = [];
 
   // Internal logic
   updateStatus(id: string) {
@@ -28,6 +28,8 @@ export class TaskListComponent {
   }
   // DragnDrop logic
   drop(event: CdkDragDrop<ToDoList>) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+    if (this.tasks !== null) {
+      moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+    }
   }
 }
