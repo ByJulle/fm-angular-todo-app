@@ -6,6 +6,7 @@ import {
   tap,
   isEmpty,
   defaultIfEmpty,
+  filter,
 } from 'rxjs';
 import { TitleComponent } from './../../components/title/title.component';
 import { Component } from '@angular/core';
@@ -37,23 +38,31 @@ import { TASK_STATUS, ToDo } from '../../types/tasks';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  tasks: Observable<ToDo[]> = of<ToDo[]>([]);
-  constructor(private store: Store<AppState>) {
-    this.tasks = store.select(selectAllTasks).pipe(defaultIfEmpty([]));
+  tasks$: Observable<ToDo[]> = of<ToDo[]>([]);
+
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit() {
+    this.tasks$ = this.store.select(selectAllTasks).pipe(
+      filter((tasks): tasks is ToDo[] => !!tasks),
+      defaultIfEmpty([]),
+    );
+  }
+  ngOnDestroy() {
+    this.tasks$.subscribe().unsubscribe();
   }
 
   newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
-
   createNewTask(task: string) {
     this.store.dispatch(addTask({ title: task }));
   }
 
   filterTasks(filter: TASK_STATUS | 'all') {
     if (filter !== 'all')
-      this.tasks = this.store
+      this.tasks$ = this.store
         .select(selectAllTasks)
         .pipe(map((tasks) => tasks.filter((task) => task.status === filter)));
-    else this.tasks = this.store.select(selectAllTasks);
+    else this.tasks$ = this.store.select(selectAllTasks);
   }
 
   submitTodo(e: KeyboardEvent): void {

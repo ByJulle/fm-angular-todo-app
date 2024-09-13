@@ -10,8 +10,8 @@
     />
   </div>
   <div class="taskList-wrapper">
-    <ng-container *ngIf="(tasks | async) !== null">
-      <task-list [tasks]="tasks | async" (filterTasks)="filterTasks($event)" />
+    <ng-container *ngIf="tasks$ | async as tasks">
+      <task-list [tasks]="tasks" (filterTasks)="filterTasks($event)" />
     </ng-container>
   </div>
 </section>
