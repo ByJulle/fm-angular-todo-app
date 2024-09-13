@@ -16,6 +16,7 @@ import { of, Subscription } from 'rxjs';
 export class TitleComponent {
   currentTheme: THEME = THEME.LIGHT;
   themeSubscription$!: Subscription;
+  iconPath: string = '/assets/icon-moon.svg';
 
   constructor(private store: Store<AppState>) {}
 
@@ -37,5 +38,14 @@ export class TitleComponent {
         theme: this.currentTheme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT,
       }),
     );
+    this.updateIcon(this.currentTheme);
+  }
+
+  updateIcon(theme: THEME) {
+    if (theme === THEME.DARK) {
+      this.iconPath = '/assets/icon-sun.svg';
+    } else {
+      this.iconPath = '/assets/icon-moon.svg';
+    }
   }
 }

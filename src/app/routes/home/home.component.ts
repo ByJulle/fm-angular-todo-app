@@ -23,6 +23,7 @@ import { addTask } from '../../state/task/task.actions';
 import { AppState } from '../../state/app.state';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { TASK_STATUS, ToDo } from '../../types/tasks';
+import { InputComponent } from '../../components/input/input.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -33,15 +34,18 @@ import { TASK_STATUS, ToDo } from '../../types/tasks';
     ReactiveFormsModule,
     AsyncPipe,
     NgIf,
+    InputComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   tasks$: Observable<ToDo[]> = of<ToDo[]>([]);
+  newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   constructor(private store: Store<AppState>) {}
 
+  // Lifecycle hooks
   ngOnInit() {
     this.tasks$ = this.store.select(selectAllTasks).pipe(
       filter((tasks): tasks is ToDo[] => !!tasks),
@@ -52,7 +56,7 @@ export class HomeComponent {
     this.tasks$.subscribe().unsubscribe();
   }
 
-  newTask = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  // Internal logic
   createNewTask(task: string) {
     this.store.dispatch(addTask({ title: task }));
   }
@@ -65,6 +69,7 @@ export class HomeComponent {
     else this.tasks$ = this.store.select(selectAllTasks);
   }
 
+  // Form actions
   submitTodo(e: KeyboardEvent): void {
     if (e.key === 'Enter') {
       if (this.newTask.value !== null && !this.newTask.invalid) {

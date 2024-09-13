@@ -1,17 +1,22 @@
 <section class="main-content">
-  <app-title />
-  <div class="input-wrapper">
-    <input
-      name="newTodo"
-      type="text"
-      placeholder="Create a new todo..."
-      [formControl]="newTask"
-      (keypress)="submitTodo($event)"
-    />
+  <div class="banner-wrapper">
+    <app-title />
+    <div class="input-wrapper">
+      <app-input
+        name="newTodo"
+        placeholder="Create a new todo..."
+        [formController]="newTask"
+        (onKeyPress)="submitTodo($event)"
+      />
+    </div>
   </div>
+
   <div class="taskList-wrapper">
     <ng-container *ngIf="tasks$ | async as tasks">
       <task-list [tasks]="tasks" (filterTasks)="filterTasks($event)" />
     </ng-container>
+  </div>
+  <div>
+    <p>Drag and drop to reorder list</p>
   </div>
 </section>
