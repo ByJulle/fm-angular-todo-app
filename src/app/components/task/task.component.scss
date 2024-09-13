@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 .task {
-    transition:  transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 
   input {
     display: none;
@@ -44,9 +44,7 @@
   }
 }
 
-.checked {
-  background-color: transparent;
-}
+
 
 .task-body {
   line-height: 14px;
@@ -60,6 +58,14 @@
   }
 }
 
+.completed {
+  .checkbox-wrapper {
+    background-color: transparent;
+  }
+  .task-body {
+    text-decoration: line-through;
+  }
+}
 
 
 // cdk drag and drop styling

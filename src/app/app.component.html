@@ -1,5 +1,4 @@
 <!doctype html>
-<main>
-  <p>{{ this.currentTheme$ | async }}</p>
+<main [ngClass]="this.currentTheme$ | async">
   <router-outlet />
 </main>

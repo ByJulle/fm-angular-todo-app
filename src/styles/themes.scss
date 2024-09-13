@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+.light-theme {
+
+}
+
+.dark-theme {
+
+    background-color: $vDarkBlue;
+    color: $LightGrayishBlue;
+
+    button {
+      color: $LightGrayishBlue !important;
+    }
+
+    .todoList {
+      background-color: $VeryDarkGrayishBlue;
+    }
+}

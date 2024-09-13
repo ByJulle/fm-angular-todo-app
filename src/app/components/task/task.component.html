@@ -1,4 +1,4 @@
-<li class="task" cdkDrag>
+<li class="task" cdkDrag [ngClass]="{ completed: isChecked }">
   <div class="task-wrapper">
     <div class="task-checkbox">
       <input
@@ -7,7 +7,7 @@
         [id]="id"
         (change)="this.updateStatus.emit(this.id)"
       /><label [for]="id">
-        <div class="checkbox-wrapper" [ngClass]="{ checked: isChecked }">
+        <div class="checkbox-wrapper">
           <img src="assets/icon-check.svg" alt="checkbox icon" />
         </div>
       </label>

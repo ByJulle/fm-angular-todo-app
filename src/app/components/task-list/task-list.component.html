@@ -24,16 +24,16 @@
       </p>
     </div>
     <div class="filter-options">
-      <button (click)="this.filterTasks.emit('all')">All</button>
+      <button (click)="this.filterTasks.emit('all')"><p>All</p></button>
       <button (click)="this.filterTasks.emit(TASK_STATUS.ACTIVE)">
-        Active
+        <p>Active</p>
       </button>
       <button (click)="this.filterTasks.emit(TASK_STATUS.COMPLETED)">
-        Completed
+        <p>Completed</p>
       </button>
     </div>
     <div class="filter-clear-completed">
-      <button (click)="clearCompletedTasks()">Clear completed</button>
+      <button (click)="clearCompletedTasks()"><p>Clear completed</p></button>
     </div>
   </footer>
 </div>

@@ -7,14 +7,14 @@ import { selectTheme } from './state/theme/theme.selectors';
 import { Observable } from 'rxjs';
 import { THEME } from './types/theme';
 import { AppState } from './state/app.state';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 
 const ROUTES = [HomeComponent];
 const COMPONENTS = [TaskListComponent];
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [...COMPONENTS, ...ROUTES, RouterOutlet, AsyncPipe],
+  imports: [...COMPONENTS, ...ROUTES, RouterOutlet, AsyncPipe, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
