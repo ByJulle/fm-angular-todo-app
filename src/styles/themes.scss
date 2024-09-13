@@ -2,7 +2,10 @@
 
 .light-theme {
  .banner-wrapper {
-      background-image: url('/assets/bg-desktop-light.jpg');
+      background-image: url('/assets/bg-mobile-light.jpg');
+      @media screen and (min-width: $mobile) {
+        background-image: url('/assets/bg-desktop-light.jpg');
+      }
     }
 }
 
@@ -18,6 +21,9 @@
     }
 
  .banner-wrapper {
-      background-image: url('/assets/bg-desktop-dark.jpg');
+       background-image: url('/assets/bg-mobile-dark.jpg');
+      @media screen and (min-width: $mobile) {
+        background-image: url('/assets/bg-desktop-dark.jpg');
+      }
     }
 }
