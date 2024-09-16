@@ -19,21 +19,21 @@
 
 .checkbox-wrapper {
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   position: relative;
-  background-color: white;
+  background-image: $checkBackground;
   cursor: pointer;
+  z-index: 9;
   &::after{
     content: '';
-    background-image: $checkBackground;
     position: absolute;
-    width: 22px;
-    height: 22px;
+    background-color: white;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    left: -1px;
-    top: -1px;
-    z-index: -1;
+
+  z-index: 10;
   }
   display: flex;
   justify-content: center;
@@ -44,8 +44,6 @@
   }
 }
 
-
-
 .task-body {
   line-height: 14px;
   cursor: pointer;
@@ -54,19 +52,21 @@
 
 .task-actions {
   button {
+  cursor: pointer;
 
   }
 }
 
 .completed {
-  .checkbox-wrapper {
-    background-color: transparent;
+  .checkbox-wrapper{
+    &::after {
+      background: transparent !important;
+    }
   }
   .task-body {
     text-decoration: line-through;
   }
 }
-
 
 // cdk drag and drop styling
 .cdk-drag-preview {
