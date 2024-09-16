@@ -8,3 +8,7 @@ h1, h2, h3, h4, h5, h6, p, span, button, input{
   font-size: $fontBody;
   font-family: "Josefin Sans", sans-serif;
 }
+
+* {
+  box-sizing: border-box;
+}

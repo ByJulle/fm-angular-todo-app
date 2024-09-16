@@ -1,5 +1,6 @@
+@import '../../../styles.scss';
 nav {
-  width:100%;
+  width: $width;
   display: flex;
   justify-content: space-between;
 }

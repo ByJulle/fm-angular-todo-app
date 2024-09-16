@@ -1,7 +1,9 @@
-<input
-  [name]="name"
-  [type]="type"
-  [placeholder]="placeholder"
-  [formControl]="formController"
-  (keypress)="this.onKeyPress.emit($event)"
-/>
+<div class="input-wrapper">
+  <input
+    [name]="name"
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="formController"
+    (keypress)="this.onKeyPress.emit($event)"
+  />
+</div>

@@ -30,10 +30,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  font-size: 12px;
   button {
     cursor: pointer;
   }
+  p, span {
+      font-size: 14px !important;
+    }
 }
 
 .filter-options {
